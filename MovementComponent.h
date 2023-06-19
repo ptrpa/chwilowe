@@ -30,6 +30,8 @@ public:
 	
 	void move(const float dir_x, const float dir_y, const float& dt);
 	void update(const float& dt);
+	void stopVelocity();
+
 };
 #endif 
 

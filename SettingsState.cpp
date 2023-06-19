@@ -32,7 +32,7 @@ void SettingsState::initKeybinds()
 
 void SettingsState::initGui()
 {
-	buttons["BACK"] = new gui::Button(1000.f, 1000.f, 450.f, 200.f, &this->font, "Back", 70,
+	buttons["BACK"] = new gui::Button(1000.f, 850.f, 450.f, 200.f, &this->font, "Back", 70,
 		sf::Color(80, 80, 80, 210), sf::Color(255, 255, 255, 255), sf::Color(25, 25, 25, 50),
 		sf::Color(80, 80, 80, 0), sf::Color(160, 160, 160, 0), sf::Color(25, 25, 25, 0));
 

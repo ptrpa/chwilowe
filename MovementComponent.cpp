@@ -126,3 +126,9 @@ void MovementComponent::update(const float& dt)
 	//Actual move
 	sprite.move(velocity * dt); //Use velocity
 }
+
+void MovementComponent::stopVelocity()
+{
+	this->velocity.x = 0.f;
+	this->velocity.y = 0.f;
+}

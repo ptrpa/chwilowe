@@ -2,7 +2,7 @@
 #define STATE_H
 
 #include "Player.h"
-#include "Bomb.h"
+#include "Wall.h"
 
 class State
 {

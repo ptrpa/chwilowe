@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "MainMenuState.h"
-
+#include "ServerConnection.h"
 
 //Initializers
 void MainMenuState::initVariables()
@@ -87,17 +87,23 @@ void MainMenuState::updateButtons()
 		i.second->update(mousePosView);
 	}
 
-	//New Game
+	// New Game
 	if (buttons["GAME_STATE"]->isPressed())
 	{
-		this->states->push(new GameState(this->window, this->supportedKeys, this->states));
+		//std::thread serverThread(&MainMenuState::ConnectWithServer, this); //nowy w¹tek
+
+		this->states->push(new GameState(this->window, this->supportedKeys, this->states)); // GameState na stos
+
+		//serverThread.detach(); // w¹tek odpiêty od g³ównego
 	}
+
+
+
 
 	//Settings
 	if (buttons["SETTINGS_STATE"]->isPressed())
 	{
-		//this->states->push(new SettingsState(this->window, this->supportedKeys, this->states));
-		this->states->push(new PreGameState(this->window, this->supportedKeys, this->states));
+		this->states->push(new SettingsState(this->window, this->supportedKeys, this->states));
 	}
 
 	//Editor

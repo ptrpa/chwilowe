@@ -15,6 +15,7 @@ gui::Button::Button(float x, float y, float width, float height, sf::Font* font,
 	this->shape.setFillColor(idle_color);
 	shape.setOutlineThickness(5.f);
 	shape.setOutlineColor(outline_idle_color);
+	wasPressedLastFrame = false;
 
 	this->font = font;
 	this->text.setFont(*this->font);
@@ -90,8 +91,17 @@ void gui::Button::update(const sf::Vector2f& mousePos)
 		//Pressed
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			buttonState = BTN_ACTIVE;
+			if (!wasPressedLastFrame)
+			{
+				buttonState = BTN_ACTIVE;
+			}
+			wasPressedLastFrame = true;
 		}
+		else
+		{
+			wasPressedLastFrame = false;
+		}
+
 	}
 
 	switch (buttonState)
@@ -295,9 +305,13 @@ void gui::TextField::update(const sf::Vector2f& mousePos)
 		//Pressed state
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			setActive(true);
 			textFieldState = BTN_ACTIVE;
+			setActive(true);
 		}
+	}
+	else if (active && !sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		setActive(false);
 	}
 
 	//Change color based on state
@@ -320,6 +334,8 @@ void gui::TextField::update(const sf::Vector2f& mousePos)
 		break;
 	}
 }
+
+
 
 void gui::TextField::render(sf::RenderTarget& target)
 {

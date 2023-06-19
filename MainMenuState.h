@@ -7,6 +7,8 @@
 #include "NewGameState.h"
 #include "PreGameState.h"
 #include "Gui.h"
+#include "ServerConnection.h"
+
 
 class MainMenuState : public State
 {

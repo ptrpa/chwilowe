@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Entity.h"
+#include "HitboxComponent.h"
 
 void Entity::initVariables()
 {
@@ -72,3 +73,4 @@ void Entity::render(sf::RenderTarget& target)
 		hitboxComponent->render(target);
 	}
 }
+

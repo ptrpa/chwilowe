@@ -11,6 +11,8 @@ private:
 	sf::Font font;
 	PauseMenu* pmenu;
 	Player* player;
+	Player* player2;
+	Wall* wall1;
 
 	//Functions
 	void initKeybinds();
@@ -18,6 +20,7 @@ private:
 	void initTextures();
 	void initPauseMenu();
 	void initPlayers();
+	void initObstacles();
 public:
 
 	GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);

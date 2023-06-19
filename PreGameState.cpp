@@ -48,10 +48,14 @@ void PreGameState::initGui()
 
 	// Initialize text fields
 	this->serverAddressField = new gui::TextField(800.f, 270.f, 300.f, 50.f, &this->font,
-		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 50));
+		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color::Magenta);
 
 	this->serverPortField = new gui::TextField(800.f, 520.f, 300.f, 50.f, &this->font,
-		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 50));
+		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color::Magenta);
+
+	serverAddressField->wasPressedLastFrame = false;
+	serverPortField->wasPressedLastFrame = false;
+
 
 }
 
@@ -128,6 +132,10 @@ void PreGameState::updateInput(const float& dt)
 
 void PreGameState::updateGui(const float& dt)
 {
+
+	serverAddressField->update(mousePosView);
+	serverPortField->update(mousePosView);
+
 	//Update all buttons and gui 
 	for (auto& i : buttons)
 	{
@@ -154,6 +162,9 @@ void PreGameState::update(const float& dt)
 
 void PreGameState::renderGui(sf::RenderTarget& target)
 {
+	serverAddressField->render(target);
+	serverPortField->render(target);
+
 	for (auto& i : buttons)
 	{
 		i.second->render(target);
